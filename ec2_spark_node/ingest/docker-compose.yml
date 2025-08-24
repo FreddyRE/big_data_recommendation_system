@@ -1,0 +1,10 @@
+services:
+  spark:
+    image: spark:3.5.1-python3
+    command: ["sleep","infinity"]
+    volumes:
+      - ./pipelines:/opt/predictapp/pipelines
+      - ./jars:/opt/spark/jars-extra
+    restart: unless-stopped
+    cpus: 1
+    mem_limit: 1g
