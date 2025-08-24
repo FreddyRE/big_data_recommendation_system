@@ -1,0 +1,184 @@
+openapi: 3.1.0
+info:
+  title: PredictApp Ingest API
+  version: 0.1.0
+  description: >
+    Minimal ingestion API that accepts client events and stores them in Postgres.
+    Supports two event types: `pageview` and `interaction`.
+
+servers:
+  - url: http://{host}
+    description: Plain HTTP (map container 8001->host 80)
+    variables:
+      host:
+        default: 3.129.18.254
+
+paths:
+  /healthz:
+    get:
+      summary: Liveness probe
+      operationId: getHealth
+      tags: [monitoring]
+      responses:
+        "200":
+          description: Service is up
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResponse"
+              examples:
+                ok:
+                  value: { ok: true }
+
+  /ingest:
+    post:
+      summary: Ingest a client event
+      description: >
+        Accepts either a **PageView** or **Interaction** event.
+        The `type` field discriminates the schema (`pageview` or `interaction`).
+      operationId: postIngest
+      tags: [ingestion]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "#/components/schemas/PageView"
+                - $ref: "#/components/schemas/Interaction"
+              discriminator:
+                propertyName: type
+                mapping:
+                  pageview: "#/components/schemas/PageView"
+                  interaction: "#/components/schemas/Interaction"
+            examples:
+              pageview:
+                summary: Page view on a product page
+                value:
+                  type: pageview
+                  user_id: anon-42
+                  session_id: sess-xyz
+                  ts: "2025-08-23T15:04:05Z"
+                  url: /product/ABC123
+                  referrer: /search?q=headphones
+                  ua: Mozilla/5.0
+              interaction_add_to_cart:
+                summary: Add to cart click
+                value:
+                  type: interaction
+                  user_id: anon-42
+                  session_id: sess-xyz
+                  ts: "2025-08-23T15:05:30Z"
+                  action: add_to_cart
+                  product_id: ABC123
+                  price: 59.99
+                  position: 2
+      responses:
+        "200":
+          description: Accepted and stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResponse"
+              examples:
+                ok:
+                  value: { ok: true }
+        "400":
+          description: Validation error (e.g., missing fields or wrong type)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                badType:
+                  value: { detail: "type must be 'pageview' or 'interaction'" }
+        "500":
+          description: Server error while storing event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                server:
+                  value: { detail: "Internal Server Error" }
+
+components:
+  schemas:
+    OkResponse:
+      type: object
+      properties:
+        ok:
+          type: boolean
+      required: [ok]
+
+    ErrorResponse:
+      type: object
+      description: FastAPI-style error body
+      properties:
+        detail:
+          type: string
+      required: [detail]
+
+    BaseEvent:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Discriminator; must be 'pageview' or 'interaction'
+        user_id:
+          type: string
+          description: Anonymous or authenticated user identifier
+          examples: [anon-42, user-123]
+        session_id:
+          type: string
+          description: Stable per-browser session identifier
+          examples: [sess-xyz]
+        ts:
+          type: string
+          format: date-time
+          description: ISO-8601 timestamp; if omitted, server sets current UTC
+      required: [type, user_id, session_id]
+      additionalProperties: true # backend stores full JSON payload as-is
+
+    PageView:
+      allOf:
+        - $ref: "#/components/schemas/BaseEvent"
+        - type: object
+          properties:
+            type:
+              type: string
+              const: pageview
+            url:
+              type: string
+              description: Path of the page viewed
+              examples: [/product/ABC123, /search?q=headphones]
+            referrer:
+              type: string
+              nullable: true
+            ua:
+              type: string
+              nullable: true
+          required: [type, url]
+
+    Interaction:
+      allOf:
+        - $ref: "#/components/schemas/BaseEvent"
+        - type: object
+          properties:
+            type:
+              type: string
+              const: interaction
+            action:
+              type: string
+              description: Interaction verb
+              enum: [view, add_to_cart, remove_from_cart, purchase]
+            product_id:
+              type: string
+            price:
+              type: number
+              nullable: true
+            position:
+              type: integer
+              nullable: true
+              description: Rank/slot on page (e.g., search result position)
+          required: [type, action, product_id]
