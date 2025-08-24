@@ -3,6 +3,14 @@ from pydantic import BaseModel, Field
 from datetime import datetime, timezone
 import os, uuid, json
 from sqlalchemy import create_engine, text
+import asyncio, json
+from aiokafka import AIOKafkaProducer
+
+
+KAFKA_BROKERS = os.getenv("KAFKA_BROKERS", "redpanda:9092")
+KAFKA_TOPIC = "events.raw.v1"
+producer: AIOKafkaProducer | None = None
+
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
@@ -39,11 +47,22 @@ class Interaction(BaseEvent):
 
 app = FastAPI(title="PredictApp Ingest")
 
+@app.on_event("startup")
+async def startup_kafka():
+    global producer
+    producer = AIOKafkaProducer(bootstrap_servers=KAFKA_BROKERS, linger_ms=10)
+    await producer.start()
+
+@app.on_event("shutdown")
+async def shutdown_kafka():
+    if producer:
+        await producer.stop()
+
 @app.get("/healthz")
 def health(): return {"ok": True}
 
 @app.post("/ingest")
-def ingest(event: dict):
+async def ingest(event: dict):
     et = event.get("type")
     model = PageView if et == "pageview" else Interaction if et == "interaction" else None
     if not model:
@@ -65,4 +84,12 @@ def ingest(event: dict):
           INSERT INTO events (id,type,user_id,session_id,ts,payload)
           VALUES (:id,:type,:user_id,:session_id,:ts,CAST(:payload AS JSONB))
         """), row)
+
+    try:
+        if producer:
+            key = (parsed.session_id or parsed.user_id).encode()
+            await producer.send_and_wait(KAFKA_TOPIC, json.dumps(event).encode(), key=key)
+    except Exception as e:
+        pass
+
     return {"ok": True}
