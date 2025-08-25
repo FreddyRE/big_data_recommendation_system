@@ -5,6 +5,9 @@ services:
     volumes:
       - ./pipelines:/opt/predictapp/pipelines
       - ./jars:/opt/spark/jars-extra
+      - ../logs:/opt/predictapp/logs
     restart: unless-stopped
     cpus: 1
     mem_limit: 1g
+    ports:
+      - "4040:4040"  # Spark UI
