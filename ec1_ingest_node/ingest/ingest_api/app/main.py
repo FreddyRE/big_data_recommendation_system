@@ -111,7 +111,6 @@ async def ingest(event: dict):
     
     logger.info(f"Saved event to database with ID: {row['id']}")
 
-    # Prepare Kafka message with timestamp
     kafka_event = event.copy()
     kafka_event["ts"] = ts.isoformat()
     kafka_event["event_id"] = row["id"]  # Add unique ID
@@ -137,7 +136,6 @@ async def ingest(event: dict):
             
     except Exception as e:
         logger.error(f"Failed to send message to Kafka: {e}")
-        # Don't raise exception - we still saved to database
     
     return {
         "ok": True,
@@ -145,7 +143,6 @@ async def ingest(event: dict):
         "kafka_sent": kafka_success
     }
 
-# Add debug endpoint to test Kafka connectivity
 @app.post("/test-kafka")
 async def test_kafka():
     if not producer:
