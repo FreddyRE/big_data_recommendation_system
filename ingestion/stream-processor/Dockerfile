@@ -7,6 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY kafka_streams_processor.py .
 COPY feature_monitor.py .
+COPY s3_connector_deploy.py .
 
 RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
 
