@@ -1,0 +1,210 @@
+# Complete Recommendation System Project Structure
+
+## Project Overview
+```
+recommendation-system/
+├── 1-ingestion/                     ✅ KEEP AS IS (WORKING)
+├── 2-processing/                    🎯 NEW LAYER  
+├── 3-analytics/                     📊 FUTURE
+├── 4-frontend/                      🖥️ FUTURE
+└── 5-deployment/                    ☁️ AWS DEPLOYMENT
+```
+
+## Phase 1: Ingestion Layer ✅ WORKING
+```
+1-ingestion/
+├── infrastructure/
+│   └── docker-compose-ingestion.yml    # Kafka + Zookeeper + MinIO + Kafka UI
+├── producers/
+│   ├── ecommerce_producers.py          # Data generators (clickstream, user, product)
+│   └── requirements.txt
+├── .env                                # Environment variables
+└── README.md
+```
+
+## Phase 2: Processing Layer 🎯 NEXT TO BUILD
+```
+2-processing/
+├── infrastructure/
+│   └── docker-compose-processing.yml   # Kafka Connect + Processing services
+├── connectors/
+│   ├── deploy_s3_connectors.py        # Deploy Kafka Connect S3 sinks
+│   └── connector-configs/             # JSON configs for connectors
+│       ├── clickstream-s3-sink.json
+│       ├── user-events-s3-sink.json
+│       └── product-events-s3-sink.json
+├── bronze-to-silver/
+│   ├── transformations/
+│   │   ├── clickstream_transformer.py  # Clean & validate clickstream
+│   │   ├── user_features_transformer.py # User profile enrichment
+│   │   └── product_features_transformer.py # Product catalog processing
+│   ├── utils/
+│   │   ├── storage_manager.py          # MinIO/S3 operations
+│   │   ├── data_quality.py             # Validation & cleaning
+│   │   └── config.py                   # Processing configuration
+│   ├── pipeline.py                     # Main bronze→silver orchestrator
+│   ├── requirements.txt
+│   └── Dockerfile
+├── silver-to-gold/
+│   ├── aggregations/
+│   │   ├── user_segmentation.py        # RFM analysis, user clusters
+│   │   ├── product_analytics.py        # Product performance metrics
+│   │   └── recommendation_features.py  # ML feature engineering
+│   ├── warehouse_loads/
+│   │   ├── snowflake_loader.py         # Load to Snowflake
+│   │   └── postgres_loader.py          # Alternative to Snowflake
+│   └── ml_features/
+│       ├── collaborative_features.py   # User-item matrices
+│       ├── content_features.py         # Product embeddings
+│       └── hybrid_features.py          # Combined features
+├── airflow/                            # Orchestration (later)
+│   ├── dags/
+│   │   ├── bronze_to_silver_dag.py
+│   │   └── silver_to_gold_dag.py
+│   └── docker-compose-airflow.yml
+├── .env
+└── README.md
+```
+
+## Phase 3: Analytics & Data Warehouse 📊 WEEK 4-5
+```
+3-analytics/
+├── data-warehouse/
+│   ├── snowflake/
+│   │   ├── schema/
+│   │   │   ├── dimensions/
+│   │   │   │   ├── dim_users.sql
+│   │   │   │   ├── dim_products.sql
+│   │   │   │   └── dim_time.sql
+│   │   │   ├── facts/
+│   │   │   │   ├── fact_clickstream.sql
+│   │   │   │   ├── fact_purchases.sql
+│   │   │   │   └── fact_recommendations.sql
+│   │   │   └── views/
+│   │   │       ├── user_360_view.sql
+│   │   │       └── product_performance_view.sql
+│   │   └── etl/
+│   │       ├── load_dimensions.py
+│   │       └── load_facts.py
+│   └── postgres/                       # Alternative to Snowflake
+│       ├── schema.sql
+│       └── docker-compose-postgres.yml
+├── ml-models/
+│   ├── collaborative_filtering/
+│   │   ├── matrix_factorization.py
+│   │   └── als_model.py
+│   ├── content_based/
+│   │   ├── product_similarity.py
+│   │   └── tfidf_recommender.py
+│   ├── hybrid/
+│   │   └── ensemble_recommender.py
+│   └── model_serving/
+│       ├── api.py                      # FastAPI model serving
+│       └── docker-compose-ml.yml
+├── dashboards/
+│   ├── streamlit/
+│   │   ├── pages/
+│   │   │   ├── user_analytics.py
+│   │   │   ├── product_analytics.py
+│   │   │   └── recommendation_metrics.py
+│   │   └── main.py
+│   └── grafana/
+│       ├── dashboards/
+│       │   ├── kafka_monitoring.json
+│       │   └── business_metrics.json
+│       └── docker-compose-grafana.yml
+└── monitoring/
+    ├── prometheus/
+    │   └── config/
+    └── elasticsearch/
+        └── logstash/
+```
+
+## Phase 4: Frontend & APIs 🖥️ MONTH 2-3
+```
+4-frontend/
+├── recommendation-api/
+│   ├── src/
+│   │   ├── routes/
+│   │   │   ├── recommendations.py
+│   │   │   ├── user_profile.py
+│   │   │   └── analytics.py
+│   │   ├── models/
+│   │   ├── services/
+│   │   │   ├── recommendation_service.py
+│   │   │   └── clickstream_tracker.py
+│   │   └── main.py                     # FastAPI app
+│   ├── requirements.txt
+│   └── Dockerfile
+├── web-frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ProductRecommendations.js
+│   │   │   ├── ClickstreamTracker.js
+│   │   │   └── UserProfile.js
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   └── App.js
+│   ├── package.json
+│   └── Dockerfile
+└── admin-dashboard/
+    ├── src/
+    │   ├── pages/
+    │   │   ├── UserManagement.js
+    │   │   ├── ProductCatalog.js
+    │   │   └── RecommendationTuning.js
+    │   └── App.js
+    └── package.json
+```
+
+## Phase 5: AWS Deployment ☁️ FINAL
+```
+5-deployment/
+├── terraform/
+│   ├── modules/
+│   │   ├── vpc/
+│   │   ├── eks/
+│   │   ├── msk/                        # Managed Kafka
+│   │   ├── s3/
+│   │   ├── snowflake/
+│   │   └── rds/
+│   ├── environments/
+│   │   ├── dev/
+│   │   ├── staging/
+│   │   └── prod/
+│   └── main.tf
+├── kubernetes/
+│   ├── ingestion/
+│   │   └── kafka-producers.yaml
+│   ├── processing/
+│   │   └── stream-processors.yaml
+│   ├── analytics/
+│   │   └── ml-models.yaml
+│   └── frontend/
+│       └── web-app.yaml
+├── docker-compose/
+│   └── docker-compose.prod.yml        # Production-like local setup
+└── scripts/
+    ├── deploy.sh
+    ├── setup-aws.sh
+    └── monitoring-setup.sh
+```
+
+## Current Status
+- ✅ **Phase 1 Complete**: Kafka + Producers + MinIO working
+- 🎯 **Next**: Build Phase 2 processing layer
+- 📅 **Timeline**: 
+  - Week 1-2: Processing layer
+  - Week 3-4: Analytics & ML
+  - Month 2: Frontend & APIs
+  - Month 3: AWS deployment
+
+## Technology Stack
+- **Ingestion**: Kafka, MinIO, Python
+- **Processing**: Kafka Connect, Python/PySpark
+- **Storage**: MinIO/S3, Snowflake/Postgres
+- **Analytics**: Streamlit, Grafana, Prometheus
+- **ML**: Scikit-learn, TensorFlow/PyTorch
+- **Frontend**: React.js, FastAPI
+- **Orchestration**: Airflow
+- **Deployment**: AWS (EKS, MSK, S3), Terraform, Docker

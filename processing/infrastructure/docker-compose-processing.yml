@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  kafka-connect:
+    image: confluentinc/cp-kafka-connect:7.4.0
+    hostname: kafka-connect
+    container_name: kafka-connect
+    ports:
+      - "8083:8083"
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: 'kafka:29092'
+      CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
+      CONNECT_GROUP_ID: compose-connect-group
+      CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
+      CONNECT_OFFSET_STORAGE_TOPIC: docker-connect-offsets
+      CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+      CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: 'false'
+      CONNECT_PLUGIN_PATH: '/usr/share/java,/usr/share/confluent-hub-components'
+    command:
+      - bash
+      - -c
+      - |
+        echo "Installing S3 connector..."
+        confluent-hub install --no-prompt confluentinc/kafka-connect-s3:10.5.0
+        echo "Launching Kafka Connect worker"
+        /etc/confluent/docker/run
+    volumes:
+      - ./connectors:/etc/kafka-connect/connectors
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  bronze-to-silver:
+    build: 
+      context: ../bronze-to-silver
+      dockerfile: Dockerfile
+    container_name: bronze-to-silver-processor
+    depends_on:
+      - kafka-connect
+    environment:
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin123
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - PROCESSING_MODE=continuous
+      - PROCESSING_INTERVAL=60
+      - LOG_LEVEL=INFO
+    volumes:
+      - ../bronze-to-silver/logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os; exit(0 if os.path.exists('/app/logs/minimal_pipeline.log') else 1)"]
+      interval: 60s
+      timeout: 15s
+      retries: 3
+      start_period: 30s
+networks:
+  default:
+    external: true
+    name: infrastructure_default

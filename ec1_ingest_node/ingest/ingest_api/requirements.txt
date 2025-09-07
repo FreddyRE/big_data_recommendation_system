@@ -1,7 +1,0 @@
-fastapi==0.114.2
-uvicorn[standard]==0.30.6
-SQLAlchemy==2.0.32
-psycopg2-binary==2.9.9
-pydantic==2.9.2
-aiokafka==0.10.0
-python-dateutil==2.9.0.post0

@@ -1,0 +1,80 @@
+# Complete Ingestion Layer Structure
+
+## 1-ingestion/ Folder Structure
+recommendation-system/
+└── 1-ingestion/                     ✅ WORKING
+    ├── connectors/
+    │   ├── deploy_connectors.py     ✅ Your S3 connector script
+    │   └── s3-sink-*.json          ✅ Connector configurations
+    ├── producers/
+    │   └── your_producer.py        ✅ Data generators
+    ├── infrastructure/
+    │   └── docker-compose-ingestion.yml  ✅ Kafka + MinIO setup
+    ├── .env                        ✅ Environment variables
+    └── README.md
+
+
+
+2-processing/
+├── bronze-to-silver/               🎯 IMMEDIATE PRIORITY
+│   ├── transformations/
+│   │   ├── clickstream_transformer.py
+│   │   ├── user_features_transformer.py
+│   │   └── product_features_transformer.py
+│   ├── utils/
+│   │   ├── storage_manager.py      # MinIO read/write operations
+│   │   ├── data_quality.py         # Validation & cleaning
+│   │   └── config.py               # Processing configuration
+│   ├── pipeline.py                 # Main orchestrator
+│   ├── requirements.txt
+│   └── Dockerfile
+├── silver-to-gold/                 📅 WEEK 3-4
+│   ├── aggregations/
+│   │   ├── user_segmentation.py
+│   │   ├── product_analytics.py
+│   │   └── recommendation_metrics.py
+│   └── warehouse_loads/
+│       ├── snowflake_loader.py
+│       └── postgres_loader.py
+└── spark/                          📅 MONTH 2 (when scaling)
+    ├── jobs/
+    │   └── bronze_to_silver_spark.py
+    └── docker-compose-spark.yml 
+
+
+Phase 3: Analytics & Monitoring (📊 WEEK 4-5)
+4-analytics/
+├── data-warehouse/
+│   ├── snowflake/
+│   │   ├── schema/
+│   │   │   ├── fact_tables.sql
+│   │   │   ├── dimension_tables.sql
+│   │   │   └── views.sql
+│   │   └── etl/
+│   └── postgres/                   # Alternative to Snowflake
+│       ├── schema.sql
+│       └── docker-compose-postgres.yml
+├── dashboards/
+│   ├── streamlit/
+│   │   ├── recommendation_metrics.py
+│   │   ├── user_analytics.py
+│   │   └── main.py
+│   └── grafana/
+│       ├── dashboards/
+│       └── docker-compose-grafana.yml
+└── monitoring/
+    ├── prometheus/
+    └── elasticsearch/
+Phase 4: Frontend (🖥️ MONTH 2-3)
+5-frontend/
+├── recommendation-frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── RecommendationList.js
+│   │   │   └── ClickstreamTracker.js
+│   │   └── services/
+│   │       └── recommendationApi.js
+│   ├── package.json
+│   └── Dockerfile
+└── admin-dashboard/
+    └── src/

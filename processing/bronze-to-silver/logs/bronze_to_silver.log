@@ -1,0 +1,578 @@
+2025-09-07 16:14:17 | INFO     | __main__:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 16:14:17 | ERROR    | __main__:test_connection:191 - ❌ Connection test failed: Minio.list_objects() got an unexpected keyword argument 'max_keys'
+2025-09-07 16:14:17 | ERROR    | __main__:<module>:218 - ❌ Storage manager test failed
+2025-09-07 16:16:19 | INFO     | __main__:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 16:16:19 | SUCCESS  | __main__:test_connection:182 - ✅ Bronze bucket connection OK
+2025-09-07 16:16:19 | SUCCESS  | __main__:test_connection:186 - ✅ Silver bucket connection OK
+2025-09-07 16:16:19 | INFO     | __main__:<module>:207 - 🎉 Storage manager is working!
+2025-09-07 16:16:19 | INFO     | __main__:list_bronze_files:42 - 📋 Listing bronze files with prefix: clickstream-events
+2025-09-07 16:16:19 | INFO     | __main__:list_bronze_files:60 - 📋 Found 0 files in bronze layer
+2025-09-07 16:16:19 | INFO     | __main__:<module>:211 - Found 0 clickstream files
+2025-09-07 16:18:16 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 16:18:16 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: 
+2025-09-07 16:18:16 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1325 files in bronze layer
+2025-09-07 16:18:16 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/1: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 16:18:16 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 10 records from 1 files
+2025-09-07 16:18:48 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 16:18:48 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: 
+2025-09-07 16:18:48 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1325 files in bronze layer
+2025-09-07 16:18:48 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/1: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 16:18:48 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 10 records from 1 files
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 16:22:28 | INFO     | __main__:process_clickstream_batch:17 - 🚀 Starting clickstream processing (max 3 files)
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1274 files in bronze layer
+2025-09-07 16:22:28 | INFO     | __main__:process_clickstream_batch:26 - 📁 Found 1274 clickstream files, processing first 3
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/3: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/3: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/3: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 30 records from 3 files
+2025-09-07 16:22:28 | INFO     | __main__:process_clickstream_batch:36 - 📊 Processing 30 clickstream records
+2025-09-07 16:22:28 | INFO     | __main__:clean_clickstream_data:65 - 🧹 Cleaning clickstream data
+2025-09-07 16:22:28 | INFO     | __main__:clean_clickstream_data:90 - 🧹 Cleaned data: 28/30 records retained
+2025-09-07 16:22:28 | INFO     | __main__:add_business_features:96 - ⚡ Adding business features
+2025-09-07 16:22:28 | INFO     | __main__:add_business_features:136 - ⚡ Enhanced 28 records with business features
+2025-09-07 16:22:28 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 28 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_202228.parquet
+2025-09-07 16:22:28 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_202228.parquet
+2025-09-07 16:22:28 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_202228.json
+2025-09-07 16:22:28 | SUCCESS  | __main__:process_clickstream_batch:59 - ✅ Successfully processed 28 records to silver layer
+2025-09-07 16:22:28 | INFO     | __main__:show_sample_results:147 - 📊 Checking silver layer results...
+2025-09-07 16:22:28 | INFO     | __main__:show_sample_results:157 - ✅ Found 1 files in silver layer
+2025-09-07 16:26:40 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 16:29:29 | INFO     | __main__:process_all_topics:37 - 🚀 Starting scaled processing (5 files per topic)
+2025-09-07 16:29:29 | INFO     | __main__:process_all_topics:42 - 
+📂 Processing topic: clickstream-events
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1274 files in bronze layer
+2025-09-07 16:29:29 | INFO     | __main__:process_topic:74 - 📁 Found 1274 files for clickstream-events, processing 5
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 50 records from 5 files
+2025-09-07 16:29:29 | INFO     | __main__:process_topic:84 - 📊 Processing 50 clickstream-events records
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 50 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_202929.parquet
+2025-09-07 16:29:29 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_202929.parquet
+2025-09-07 16:29:29 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_202929.json
+2025-09-07 16:29:29 | SUCCESS  | __main__:process_topic:106 - ✅ clickstream-events: 50 records → clickstream_silver
+2025-09-07 16:29:29 | INFO     | __main__:process_all_topics:42 - 
+📂 Processing topic: user-events
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/user-events/
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 31 files in bronze layer
+2025-09-07 16:29:29 | INFO     | __main__:process_topic:74 - 📁 Found 31 files for user-events, processing 5
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/user-events/partition=0/user-events+0+0000000000.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/user-events/partition=0/user-events+0+0000000005.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/user-events/partition=0/user-events+0+0000000010.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/user-events/partition=0/user-events+0+0000000015.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/user-events/partition=0/user-events+0+0000000020.json
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 25 records from 5 files
+2025-09-07 16:29:29 | INFO     | __main__:process_topic:84 - 📊 Processing 25 user-events records
+2025-09-07 16:29:29 | INFO     | __main__:process_user_records:172 - 🧑‍💼 Processing 25 user records
+2025-09-07 16:29:29 | INFO     | __main__:process_user_records:207 - 🧑‍💼 Processed to 25 clean user records
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 25 records to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_202929.parquet
+2025-09-07 16:29:29 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_202929.parquet
+2025-09-07 16:29:29 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_202929.json
+2025-09-07 16:29:29 | SUCCESS  | __main__:process_topic:106 - ✅ user-events: 25 records → user_events_silver
+2025-09-07 16:29:29 | INFO     | __main__:process_all_topics:42 - 
+📂 Processing topic: product-events
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/product-events/
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 20 files in bronze layer
+2025-09-07 16:29:29 | INFO     | __main__:process_topic:74 - 📁 Found 20 files for product-events, processing 5
+2025-09-07 16:29:29 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/product-events/partition=0/product-events+0+0000000000.json
+2025-09-07 16:29:30 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/product-events/partition=0/product-events+0+0000000003.json
+2025-09-07 16:29:30 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/product-events/partition=0/product-events+0+0000000006.json
+2025-09-07 16:29:30 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/product-events/partition=0/product-events+0+0000000009.json
+2025-09-07 16:29:30 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/product-events/partition=0/product-events+0+0000000012.json
+2025-09-07 16:29:30 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 15 records from 5 files
+2025-09-07 16:29:30 | INFO     | __main__:process_topic:84 - 📊 Processing 15 product-events records
+2025-09-07 16:29:30 | INFO     | __main__:process_product_records:217 - 📦 Processing 15 product records
+2025-09-07 16:29:30 | INFO     | __main__:process_product_records:255 - 📦 Processed to 15 clean product records
+2025-09-07 16:29:30 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 15 records to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_202930.parquet
+2025-09-07 16:29:30 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_202930.parquet
+2025-09-07 16:29:30 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_202930.json
+2025-09-07 16:29:30 | SUCCESS  | __main__:process_topic:106 - ✅ product-events: 15 records → product_events_silver
+2025-09-07 16:29:30 | INFO     | __main__:process_all_topics:55 - 
+📊 PROCESSING SUMMARY:
+2025-09-07 16:29:30 | INFO     | __main__:process_all_topics:58 -    clickstream-events: ✅ SUCCESS
+2025-09-07 16:29:30 | INFO     | __main__:process_all_topics:58 -    user-events: ✅ SUCCESS
+2025-09-07 16:29:30 | INFO     | __main__:process_all_topics:58 -    product-events: ✅ SUCCESS
+2025-09-07 16:31:31 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 17:03:23 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 17:03:23 | INFO     | __main__:run_pipeline:78 - 🚀 Starting bronze-to-silver pipeline
+2025-09-07 17:03:23 | INFO     | __main__:run_pipeline:79 - 📋 Topics: ['clickstream', 'user', 'product']
+2025-09-07 17:03:23 | INFO     | __main__:run_pipeline:80 - 📁 Files per topic: 10
+2025-09-07 17:03:23 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: clickstream
+2025-09-07 17:03:23 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1274 files in bronze layer
+2025-09-07 17:03:24 | INFO     | __main__:_process_topic:152 - 📁 Found 1274 files, processing 10
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000050.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000060.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000070.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000080.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000090.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 100 records from 10 files
+2025-09-07 17:03:24 | INFO     | __main__:_process_topic:163 - 📖 Read 100 raw records
+2025-09-07 17:03:24 | INFO     | __main__:_process_clickstream_data:209 - 🔄 Processing 100 clickstream records
+2025-09-07 17:03:24 | INFO     | __main__:_process_clickstream_data:261 - 🧹 Clickstream: 96/100 records retained (96.0%)
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 96 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210324.parquet
+2025-09-07 17:03:24 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210324.parquet
+2025-09-07 17:03:24 | SUCCESS  | __main__:_process_topic:191 - ✅ clickstream: 96 records → clickstream_silver
+2025-09-07 17:03:24 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: user
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/user-events/
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 31 files in bronze layer
+2025-09-07 17:03:24 | INFO     | __main__:_process_topic:152 - 📁 Found 31 files, processing 10
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/10: topics/user-events/partition=0/user-events+0+0000000000.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/10: topics/user-events/partition=0/user-events+0+0000000005.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/10: topics/user-events/partition=0/user-events+0+0000000010.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/10: topics/user-events/partition=0/user-events+0+0000000015.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/10: topics/user-events/partition=0/user-events+0+0000000020.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/10: topics/user-events/partition=0/user-events+0+0000000025.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/10: topics/user-events/partition=0/user-events+0+0000000030.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/10: topics/user-events/partition=0/user-events+0+0000000035.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/10: topics/user-events/partition=0/user-events+0+0000000040.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/10: topics/user-events/partition=0/user-events+0+0000000045.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 50 records from 10 files
+2025-09-07 17:03:24 | INFO     | __main__:_process_topic:163 - 📖 Read 50 raw records
+2025-09-07 17:03:24 | INFO     | __main__:_process_user_data:273 - 👥 Processing 50 user records
+2025-09-07 17:03:24 | INFO     | __main__:_process_user_data:309 - 🧹 Users: 50/50 records retained (100.0%)
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 50 records to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210324.parquet
+2025-09-07 17:03:24 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210324.parquet
+2025-09-07 17:03:24 | SUCCESS  | __main__:_process_topic:191 - ✅ user: 50 records → user_events_silver
+2025-09-07 17:03:24 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: product
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/product-events/
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 20 files in bronze layer
+2025-09-07 17:03:24 | INFO     | __main__:_process_topic:152 - 📁 Found 20 files, processing 10
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/10: topics/product-events/partition=0/product-events+0+0000000000.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/10: topics/product-events/partition=0/product-events+0+0000000003.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/10: topics/product-events/partition=0/product-events+0+0000000006.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/10: topics/product-events/partition=0/product-events+0+0000000009.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/10: topics/product-events/partition=0/product-events+0+0000000012.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/10: topics/product-events/partition=0/product-events+0+0000000015.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/10: topics/product-events/partition=0/product-events+0+0000000018.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/10: topics/product-events/partition=0/product-events+0+0000000021.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/10: topics/product-events/partition=0/product-events+0+0000000024.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/10: topics/product-events/partition=0/product-events+0+0000000027.json
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 30 records from 10 files
+2025-09-07 17:03:24 | INFO     | __main__:_process_topic:163 - 📖 Read 30 raw records
+2025-09-07 17:03:24 | INFO     | __main__:_process_product_data:321 - 📦 Processing 30 product records
+2025-09-07 17:03:24 | INFO     | __main__:_process_product_data:360 - 🧹 Products: 30/30 records retained (100.0%)
+2025-09-07 17:03:24 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 30 records to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210324.parquet
+2025-09-07 17:03:24 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210324.parquet
+2025-09-07 17:03:24 | SUCCESS  | __main__:_process_topic:191 - ✅ product: 30 records → product_events_silver
+2025-09-07 17:03:24 | INFO     | __main__:run_pipeline:115 - 
+🏆 PIPELINE COMPLETE
+2025-09-07 17:03:24 | INFO     | __main__:run_pipeline:116 -    ⏱️  Duration: 0.3 seconds
+2025-09-07 17:03:24 | INFO     | __main__:run_pipeline:117 -    📊 Success rate: 100.0%
+2025-09-07 17:03:24 | INFO     | __main__:run_pipeline:118 -    📈 Total records: 176
+2025-09-07 17:03:24 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_210324.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:78 - 🚀 Starting bronze-to-silver pipeline
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:79 - 📋 Topics: ['clickstream', 'user', 'product']
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:80 - 📁 Files per topic: 20
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: clickstream
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1274 files in bronze layer
+2025-09-07 17:05:19 | INFO     | __main__:_process_topic:152 - 📁 Found 1274 files, processing 20
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000050.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000060.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000070.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000080.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000090.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 11/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000100.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 12/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000110.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 13/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000120.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 14/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000130.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 15/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000140.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 16/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000150.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 17/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000160.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 18/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000170.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 19/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000180.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 20/20: topics/clickstream-events/partition=0/clickstream-events+0+0000000190.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 200 records from 20 files
+2025-09-07 17:05:19 | INFO     | __main__:_process_topic:163 - 📖 Read 200 raw records
+2025-09-07 17:05:19 | INFO     | __main__:_process_clickstream_data:209 - 🔄 Processing 200 clickstream records
+2025-09-07 17:05:19 | INFO     | __main__:_process_clickstream_data:261 - 🧹 Clickstream: 192/200 records retained (96.0%)
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 192 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210519.parquet
+2025-09-07 17:05:19 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210519.parquet
+2025-09-07 17:05:19 | SUCCESS  | __main__:_process_topic:191 - ✅ clickstream: 192 records → clickstream_silver
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: user
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/user-events/
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 31 files in bronze layer
+2025-09-07 17:05:19 | INFO     | __main__:_process_topic:152 - 📁 Found 31 files, processing 20
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/20: topics/user-events/partition=0/user-events+0+0000000000.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/20: topics/user-events/partition=0/user-events+0+0000000005.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/20: topics/user-events/partition=0/user-events+0+0000000010.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/20: topics/user-events/partition=0/user-events+0+0000000015.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/20: topics/user-events/partition=0/user-events+0+0000000020.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/20: topics/user-events/partition=0/user-events+0+0000000025.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/20: topics/user-events/partition=0/user-events+0+0000000030.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/20: topics/user-events/partition=0/user-events+0+0000000035.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/20: topics/user-events/partition=0/user-events+0+0000000040.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/20: topics/user-events/partition=0/user-events+0+0000000045.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 11/20: topics/user-events/partition=0/user-events+0+0000000050.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 12/20: topics/user-events/partition=0/user-events+0+0000000055.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 13/20: topics/user-events/partition=0/user-events+0+0000000060.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 14/20: topics/user-events/partition=0/user-events+0+0000000065.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 15/20: topics/user-events/partition=0/user-events+0+0000000070.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 16/20: topics/user-events/partition=0/user-events+0+0000000075.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 17/20: topics/user-events/partition=0/user-events+0+0000000080.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 18/20: topics/user-events/partition=0/user-events+0+0000000085.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 19/20: topics/user-events/partition=0/user-events+0+0000000090.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 20/20: topics/user-events/partition=0/user-events+0+0000000095.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 100 records from 20 files
+2025-09-07 17:05:19 | INFO     | __main__:_process_topic:163 - 📖 Read 100 raw records
+2025-09-07 17:05:19 | INFO     | __main__:_process_user_data:273 - 👥 Processing 100 user records
+2025-09-07 17:05:19 | INFO     | __main__:_process_user_data:309 - 🧹 Users: 99/100 records retained (99.0%)
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 99 records to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210519.parquet
+2025-09-07 17:05:19 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210519.parquet
+2025-09-07 17:05:19 | SUCCESS  | __main__:_process_topic:191 - ✅ user: 99 records → user_events_silver
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: product
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/product-events/
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 20 files in bronze layer
+2025-09-07 17:05:19 | INFO     | __main__:_process_topic:152 - 📁 Found 20 files, processing 20
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/20: topics/product-events/partition=0/product-events+0+0000000000.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/20: topics/product-events/partition=0/product-events+0+0000000003.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/20: topics/product-events/partition=0/product-events+0+0000000006.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/20: topics/product-events/partition=0/product-events+0+0000000009.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/20: topics/product-events/partition=0/product-events+0+0000000012.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/20: topics/product-events/partition=0/product-events+0+0000000015.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/20: topics/product-events/partition=0/product-events+0+0000000018.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/20: topics/product-events/partition=0/product-events+0+0000000021.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/20: topics/product-events/partition=0/product-events+0+0000000024.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/20: topics/product-events/partition=0/product-events+0+0000000027.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 11/20: topics/product-events/partition=0/product-events+0+0000000030.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 12/20: topics/product-events/partition=0/product-events+0+0000000033.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 13/20: topics/product-events/partition=0/product-events+0+0000000036.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 14/20: topics/product-events/partition=0/product-events+0+0000000039.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 15/20: topics/product-events/year=2025/month=09/day=07/hour=13/product-events+0+0000000000.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 16/20: topics/product-events/year=2025/month=09/day=07/hour=14/product-events+0+0000000001.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 17/20: topics/product-events/year=2025/month=09/day=07/hour=14/product-events+0+0000000021.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 18/20: topics/product-events/year=2025/month=09/day=07/hour=14/product-events+0+0000000041.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 19/20: topics/product-events/year=2025/month=09/day=07/hour=15/product-events+0+0000000044.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 20/20: topics/product-events/year=2025/month=09/day=07/hour=16/product-events+0+0000000059.json
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 121 records from 20 files
+2025-09-07 17:05:19 | INFO     | __main__:_process_topic:163 - 📖 Read 121 raw records
+2025-09-07 17:05:19 | INFO     | __main__:_process_product_data:321 - 📦 Processing 121 product records
+2025-09-07 17:05:19 | INFO     | __main__:_process_product_data:360 - 🧹 Products: 76/121 records retained (62.8%)
+2025-09-07 17:05:19 | WARNING  | __main__:_process_topic:178 - ⚠️  Low data quality: 62.81%
+2025-09-07 17:05:19 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 76 records to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210519.parquet
+2025-09-07 17:05:19 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210519.parquet
+2025-09-07 17:05:19 | SUCCESS  | __main__:_process_topic:191 - ✅ product: 76 records → product_events_silver
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:115 - 
+🏆 PIPELINE COMPLETE
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:116 -    ⏱️  Duration: 0.4 seconds
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:117 -    📊 Success rate: 100.0%
+2025-09-07 17:05:19 | INFO     | __main__:run_pipeline:118 -    📈 Total records: 367
+2025-09-07 17:05:19 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_210519.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:78 - 🚀 Starting bronze-to-silver pipeline
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:79 - 📋 Topics: ['clickstream', 'user']
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:80 - 📁 Files per topic: 15
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: clickstream
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1274 files in bronze layer
+2025-09-07 17:05:36 | INFO     | __main__:_process_topic:152 - 📁 Found 1274 files, processing 15
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000050.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000060.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000070.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000080.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000090.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 11/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000100.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 12/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000110.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 13/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000120.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 14/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000130.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 15/15: topics/clickstream-events/partition=0/clickstream-events+0+0000000140.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 150 records from 15 files
+2025-09-07 17:05:36 | INFO     | __main__:_process_topic:163 - 📖 Read 150 raw records
+2025-09-07 17:05:36 | INFO     | __main__:_process_clickstream_data:209 - 🔄 Processing 150 clickstream records
+2025-09-07 17:05:36 | INFO     | __main__:_process_clickstream_data:261 - 🧹 Clickstream: 142/150 records retained (94.7%)
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 142 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210536.parquet
+2025-09-07 17:05:36 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210536.parquet
+2025-09-07 17:05:36 | SUCCESS  | __main__:_process_topic:191 - ✅ clickstream: 142 records → clickstream_silver
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: user
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/user-events/
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 31 files in bronze layer
+2025-09-07 17:05:36 | INFO     | __main__:_process_topic:152 - 📁 Found 31 files, processing 15
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/15: topics/user-events/partition=0/user-events+0+0000000000.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/15: topics/user-events/partition=0/user-events+0+0000000005.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/15: topics/user-events/partition=0/user-events+0+0000000010.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/15: topics/user-events/partition=0/user-events+0+0000000015.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/15: topics/user-events/partition=0/user-events+0+0000000020.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/15: topics/user-events/partition=0/user-events+0+0000000025.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/15: topics/user-events/partition=0/user-events+0+0000000030.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/15: topics/user-events/partition=0/user-events+0+0000000035.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/15: topics/user-events/partition=0/user-events+0+0000000040.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/15: topics/user-events/partition=0/user-events+0+0000000045.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 11/15: topics/user-events/partition=0/user-events+0+0000000050.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 12/15: topics/user-events/partition=0/user-events+0+0000000055.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 13/15: topics/user-events/partition=0/user-events+0+0000000060.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 14/15: topics/user-events/partition=0/user-events+0+0000000065.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 15/15: topics/user-events/partition=0/user-events+0+0000000070.json
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 75 records from 15 files
+2025-09-07 17:05:36 | INFO     | __main__:_process_topic:163 - 📖 Read 75 raw records
+2025-09-07 17:05:36 | INFO     | __main__:_process_user_data:273 - 👥 Processing 75 user records
+2025-09-07 17:05:36 | INFO     | __main__:_process_user_data:309 - 🧹 Users: 74/75 records retained (98.7%)
+2025-09-07 17:05:36 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 74 records to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210536.parquet
+2025-09-07 17:05:36 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210536.parquet
+2025-09-07 17:05:36 | SUCCESS  | __main__:_process_topic:191 - ✅ user: 74 records → user_events_silver
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:115 - 
+🏆 PIPELINE COMPLETE
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:116 -    ⏱️  Duration: 0.2 seconds
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:117 -    📊 Success rate: 100.0%
+2025-09-07 17:05:36 | INFO     | __main__:run_pipeline:118 -    📈 Total records: 216
+2025-09-07 17:05:36 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_210536.json
+2025-09-07 17:05:43 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 17:05:43 | INFO     | __main__:run_pipeline:78 - 🚀 Starting bronze-to-silver pipeline
+2025-09-07 17:05:43 | INFO     | __main__:run_pipeline:79 - 📋 Topics: ['clickstream', 'user', 'product']
+2025-09-07 17:05:43 | INFO     | __main__:run_pipeline:80 - 📁 Files per topic: 10
+2025-09-07 17:05:43 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: clickstream
+2025-09-07 17:05:43 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1274 files in bronze layer
+2025-09-07 17:05:44 | INFO     | __main__:_process_topic:152 - 📁 Found 1274 files, processing 10
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000050.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000060.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000070.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000080.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000090.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 100 records from 10 files
+2025-09-07 17:05:44 | INFO     | __main__:_process_topic:163 - 📖 Read 100 raw records
+2025-09-07 17:05:44 | INFO     | __main__:_process_clickstream_data:209 - 🔄 Processing 100 clickstream records
+2025-09-07 17:05:44 | INFO     | __main__:_process_clickstream_data:261 - 🧹 Clickstream: 96/100 records retained (96.0%)
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 96 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210544.parquet
+2025-09-07 17:05:44 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210544.parquet
+2025-09-07 17:05:44 | SUCCESS  | __main__:_process_topic:191 - ✅ clickstream: 96 records → clickstream_silver
+2025-09-07 17:05:44 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: user
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/user-events/
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 31 files in bronze layer
+2025-09-07 17:05:44 | INFO     | __main__:_process_topic:152 - 📁 Found 31 files, processing 10
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/10: topics/user-events/partition=0/user-events+0+0000000000.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/10: topics/user-events/partition=0/user-events+0+0000000005.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/10: topics/user-events/partition=0/user-events+0+0000000010.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/10: topics/user-events/partition=0/user-events+0+0000000015.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/10: topics/user-events/partition=0/user-events+0+0000000020.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/10: topics/user-events/partition=0/user-events+0+0000000025.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/10: topics/user-events/partition=0/user-events+0+0000000030.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/10: topics/user-events/partition=0/user-events+0+0000000035.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/10: topics/user-events/partition=0/user-events+0+0000000040.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/10: topics/user-events/partition=0/user-events+0+0000000045.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 50 records from 10 files
+2025-09-07 17:05:44 | INFO     | __main__:_process_topic:163 - 📖 Read 50 raw records
+2025-09-07 17:05:44 | INFO     | __main__:_process_user_data:273 - 👥 Processing 50 user records
+2025-09-07 17:05:44 | INFO     | __main__:_process_user_data:309 - 🧹 Users: 50/50 records retained (100.0%)
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 50 records to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210544.parquet
+2025-09-07 17:05:44 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210544.parquet
+2025-09-07 17:05:44 | SUCCESS  | __main__:_process_topic:191 - ✅ user: 50 records → user_events_silver
+2025-09-07 17:05:44 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: product
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/product-events/
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 20 files in bronze layer
+2025-09-07 17:05:44 | INFO     | __main__:_process_topic:152 - 📁 Found 20 files, processing 10
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/10: topics/product-events/partition=0/product-events+0+0000000000.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/10: topics/product-events/partition=0/product-events+0+0000000003.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/10: topics/product-events/partition=0/product-events+0+0000000006.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/10: topics/product-events/partition=0/product-events+0+0000000009.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/10: topics/product-events/partition=0/product-events+0+0000000012.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/10: topics/product-events/partition=0/product-events+0+0000000015.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/10: topics/product-events/partition=0/product-events+0+0000000018.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/10: topics/product-events/partition=0/product-events+0+0000000021.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/10: topics/product-events/partition=0/product-events+0+0000000024.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/10: topics/product-events/partition=0/product-events+0+0000000027.json
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 30 records from 10 files
+2025-09-07 17:05:44 | INFO     | __main__:_process_topic:163 - 📖 Read 30 raw records
+2025-09-07 17:05:44 | INFO     | __main__:_process_product_data:321 - 📦 Processing 30 product records
+2025-09-07 17:05:44 | INFO     | __main__:_process_product_data:360 - 🧹 Products: 30/30 records retained (100.0%)
+2025-09-07 17:05:44 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 30 records to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210544.parquet
+2025-09-07 17:05:44 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210544.parquet
+2025-09-07 17:05:44 | SUCCESS  | __main__:_process_topic:191 - ✅ product: 30 records → product_events_silver
+2025-09-07 17:05:44 | INFO     | __main__:run_pipeline:115 - 
+🏆 PIPELINE COMPLETE
+2025-09-07 17:05:44 | INFO     | __main__:run_pipeline:116 -    ⏱️  Duration: 0.3 seconds
+2025-09-07 17:05:44 | INFO     | __main__:run_pipeline:117 -    📊 Success rate: 100.0%
+2025-09-07 17:05:44 | INFO     | __main__:run_pipeline:118 -    📈 Total records: 176
+2025-09-07 17:05:44 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_210544.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:78 - 🚀 Starting bronze-to-silver pipeline
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:79 - 📋 Topics: ['clickstream', 'user', 'product']
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:80 - 📁 Files per topic: 5
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: clickstream
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1274 files in bronze layer
+2025-09-07 17:06:37 | INFO     | __main__:_process_topic:152 - 📁 Found 1274 files, processing 5
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 50 records from 5 files
+2025-09-07 17:06:37 | INFO     | __main__:_process_topic:163 - 📖 Read 50 raw records
+2025-09-07 17:06:37 | INFO     | __main__:_process_clickstream_data:209 - 🔄 Processing 50 clickstream records
+2025-09-07 17:06:37 | INFO     | __main__:_process_clickstream_data:261 - 🧹 Clickstream: 50/50 records retained (100.0%)
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 50 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210637.parquet
+2025-09-07 17:06:37 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_210637.parquet
+2025-09-07 17:06:37 | SUCCESS  | __main__:_process_topic:191 - ✅ clickstream: 50 records → clickstream_silver
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: user
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/user-events/
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 31 files in bronze layer
+2025-09-07 17:06:37 | INFO     | __main__:_process_topic:152 - 📁 Found 31 files, processing 5
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/user-events/partition=0/user-events+0+0000000000.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/user-events/partition=0/user-events+0+0000000005.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/user-events/partition=0/user-events+0+0000000010.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/user-events/partition=0/user-events+0+0000000015.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/user-events/partition=0/user-events+0+0000000020.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 25 records from 5 files
+2025-09-07 17:06:37 | INFO     | __main__:_process_topic:163 - 📖 Read 25 raw records
+2025-09-07 17:06:37 | INFO     | __main__:_process_user_data:273 - 👥 Processing 25 user records
+2025-09-07 17:06:37 | INFO     | __main__:_process_user_data:309 - 🧹 Users: 25/25 records retained (100.0%)
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 25 records to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210637.parquet
+2025-09-07 17:06:37 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_210637.parquet
+2025-09-07 17:06:37 | SUCCESS  | __main__:_process_topic:191 - ✅ user: 25 records → user_events_silver
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: product
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/product-events/
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 20 files in bronze layer
+2025-09-07 17:06:37 | INFO     | __main__:_process_topic:152 - 📁 Found 20 files, processing 5
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/product-events/partition=0/product-events+0+0000000000.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/product-events/partition=0/product-events+0+0000000003.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/product-events/partition=0/product-events+0+0000000006.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/product-events/partition=0/product-events+0+0000000009.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/product-events/partition=0/product-events+0+0000000012.json
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 15 records from 5 files
+2025-09-07 17:06:37 | INFO     | __main__:_process_topic:163 - 📖 Read 15 raw records
+2025-09-07 17:06:37 | INFO     | __main__:_process_product_data:321 - 📦 Processing 15 product records
+2025-09-07 17:06:37 | INFO     | __main__:_process_product_data:360 - 🧹 Products: 15/15 records retained (100.0%)
+2025-09-07 17:06:37 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 15 records to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210637.parquet
+2025-09-07 17:06:37 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_210637.parquet
+2025-09-07 17:06:37 | SUCCESS  | __main__:_process_topic:191 - ✅ product: 15 records → product_events_silver
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:115 - 
+🏆 PIPELINE COMPLETE
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:116 -    ⏱️  Duration: 0.3 seconds
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:117 -    📊 Success rate: 100.0%
+2025-09-07 17:06:37 | INFO     | __main__:run_pipeline:118 -    📈 Total records: 90
+2025-09-07 17:06:37 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_210637.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:78 - 🚀 Starting bronze-to-silver pipeline
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:79 - 📋 Topics: ['clickstream', 'user', 'product']
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:80 - 📁 Files per topic: 5
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: clickstream
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1285 files in bronze layer
+2025-09-07 17:59:39 | INFO     | __main__:_process_topic:152 - 📁 Found 1285 files, processing 5
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 50 records from 5 files
+2025-09-07 17:59:39 | INFO     | __main__:_process_topic:163 - 📖 Read 50 raw records
+2025-09-07 17:59:39 | INFO     | __main__:_process_clickstream_data:209 - 🔄 Processing 50 clickstream records
+2025-09-07 17:59:39 | INFO     | __main__:_process_clickstream_data:261 - 🧹 Clickstream: 50/50 records retained (100.0%)
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 50 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_215939.parquet
+2025-09-07 17:59:39 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_215939.parquet
+2025-09-07 17:59:39 | SUCCESS  | __main__:_process_topic:191 - ✅ clickstream: 50 records → clickstream_silver
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: user
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/user-events/
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 34 files in bronze layer
+2025-09-07 17:59:39 | INFO     | __main__:_process_topic:152 - 📁 Found 34 files, processing 5
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/user-events/partition=0/user-events+0+0000000000.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/user-events/partition=0/user-events+0+0000000005.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/user-events/partition=0/user-events+0+0000000010.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/user-events/partition=0/user-events+0+0000000015.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/user-events/partition=0/user-events+0+0000000020.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 25 records from 5 files
+2025-09-07 17:59:39 | INFO     | __main__:_process_topic:163 - 📖 Read 25 raw records
+2025-09-07 17:59:39 | INFO     | __main__:_process_user_data:273 - 👥 Processing 25 user records
+2025-09-07 17:59:39 | INFO     | __main__:_process_user_data:309 - 🧹 Users: 25/25 records retained (100.0%)
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 25 records to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_215939.parquet
+2025-09-07 17:59:39 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: user_events_silver/date=2025-09-07/user_events_silver_20250907_215939.parquet
+2025-09-07 17:59:39 | SUCCESS  | __main__:_process_topic:191 - ✅ user: 25 records → user_events_silver
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: product
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/product-events/
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 22 files in bronze layer
+2025-09-07 17:59:39 | INFO     | __main__:_process_topic:152 - 📁 Found 22 files, processing 5
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/5: topics/product-events/partition=0/product-events+0+0000000000.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/5: topics/product-events/partition=0/product-events+0+0000000003.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/5: topics/product-events/partition=0/product-events+0+0000000006.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/5: topics/product-events/partition=0/product-events+0+0000000009.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/5: topics/product-events/partition=0/product-events+0+0000000012.json
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 15 records from 5 files
+2025-09-07 17:59:39 | INFO     | __main__:_process_topic:163 - 📖 Read 15 raw records
+2025-09-07 17:59:39 | INFO     | __main__:_process_product_data:321 - 📦 Processing 15 product records
+2025-09-07 17:59:39 | INFO     | __main__:_process_product_data:360 - 🧹 Products: 15/15 records retained (100.0%)
+2025-09-07 17:59:39 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 15 records to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_215939.parquet
+2025-09-07 17:59:39 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: product_events_silver/date=2025-09-07/product_events_silver_20250907_215939.parquet
+2025-09-07 17:59:39 | SUCCESS  | __main__:_process_topic:191 - ✅ product: 15 records → product_events_silver
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:115 - 
+🏆 PIPELINE COMPLETE
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:116 -    ⏱️  Duration: 0.3 seconds
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:117 -    📊 Success rate: 100.0%
+2025-09-07 17:59:39 | INFO     | __main__:run_pipeline:118 -    📈 Total records: 90
+2025-09-07 17:59:39 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_215939.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:__init__:34 - ✅ MinIO manager initialized - Bronze=READ-ONLY, Silver=WRITE-ONLY
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:78 - 🚀 Starting bronze-to-silver pipeline
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:79 - 📋 Topics: ['clickstream']
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:80 - 📁 Files per topic: 10
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:97 - 
+📂 Processing topic: clickstream
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:list_bronze_files:42 - 📋 Listing bronze files with prefix: topics/clickstream-events/
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:list_bronze_files:60 - 📋 Found 1290 files in bronze layer
+2025-09-07 18:07:45 | INFO     | __main__:_process_topic:152 - 📁 Found 1290 files, processing 10
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 1/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000000.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 2/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000010.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 3/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000020.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 4/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000030.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 5/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000040.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 6/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000050.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 7/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000060.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 8/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000070.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 9/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000080.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:81 - 📖 Reading file 10/10: topics/clickstream-events/partition=0/clickstream-events+0+0000000090.json
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:read_bronze_files_safely:105 - 📖 Successfully read 100 records from 10 files
+2025-09-07 18:07:45 | INFO     | __main__:_process_topic:163 - 📖 Read 100 raw records
+2025-09-07 18:07:45 | INFO     | __main__:_process_clickstream_data:209 - 🔄 Processing 100 clickstream records
+2025-09-07 18:07:45 | INFO     | __main__:_process_clickstream_data:261 - 🧹 Clickstream: 96/100 records retained (96.0%)
+2025-09-07 18:07:45 | INFO     | utils.storage_manager:write_to_silver_safely:125 - 💾 Writing 96 records to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_220745.parquet
+2025-09-07 18:07:45 | SUCCESS  | utils.storage_manager:write_to_silver_safely:141 - ✅ Successfully wrote to silver: clickstream_silver/date=2025-09-07/clickstream_silver_20250907_220745.parquet
+2025-09-07 18:07:45 | SUCCESS  | __main__:_process_topic:191 - ✅ clickstream: 96 records → clickstream_silver
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:115 - 
+🏆 PIPELINE COMPLETE
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:116 -    ⏱️  Duration: 0.2 seconds
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:117 -    📊 Success rate: 100.0%
+2025-09-07 18:07:45 | INFO     | __main__:run_pipeline:118 -    📈 Total records: 96
+2025-09-07 18:07:45 | SUCCESS  | utils.storage_manager:save_processing_checkpoint:170 - ✅ Checkpoint saved: bronze_to_silver_checkpoint_20250907_220745.json
